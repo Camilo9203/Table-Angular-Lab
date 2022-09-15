@@ -23,7 +23,7 @@ angular.module('table.controller', []).controller('TableController',function($sc
 
         //***** by
         $scope.orderBy = {pedicate: 'name', reverse: false};
-        $scope.***** = function(predicate) {
+        $scope.links = function(predicate) {
             $scope.orderBy.reverse = !$scope.orderBy.reverse;
             $scope.orderBy.predicate = predicate;
         };

@@ -1,0 +1,35 @@
+select option { text-transform: capitalize; }
+ul.pagination{ width: 25%; margin: 0 auto; }
+table{ width:100%; }
+table tr th { text-transform: capitalize; }
+table tr th:nth-child(1){ width: 150px; }
+table tr th:nth-child(2), table td:nth-child(2){ display: none;  }
+th.links{ cursor: pointer; }
+i.up:before, i.down:before{
+    content: '<';
+    font-style: normal;
+    font-size: 14px;
+    width: 15px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+    left: 10px;
+}
+i.up:before{
+    content: '>';
+}
+i.up{
+    top: -5px;
+    transform: rotate(90deg);
+    display: inline-block;
+    position: relative;
+}
+i.down{
+    transform: rotate(90deg);
+    display: inline-block;
+    top: -5px;
+    position: relative;
+}
+tr > td a{
+    margin-left: 5px;
+}

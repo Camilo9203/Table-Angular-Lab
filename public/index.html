@@ -8,6 +8,54 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
+<div class="row">
+    <div class="columns">
+        Datos
+        <select ng-options="item as item.label for item in types"
+                ng-model="type" ng-change="changeData()"></select>
+    </div>
+
+</div>
+<div class="row">
+    <div class="columns small-6">
+        <label for="">Filtrar
+            <input type="text" ng-model="search[selectFilter]" >
+        </label>
+    </div>
+    <div class="columns small-6">
+        <label for="">Filtrar por</label>
+        <select ng-model="selectFilter" ng-init="selectFilter='$'" ng-change="changeFilterTo();">
+            <option ng-repeat="item in filter[0]" value="{{item}}">
+                {{filter[1][$index]}}
+            </option>
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="columns">
+        <table>
+            <tr ng-if="data.length > 0">
+                <th>Acciones</th>
+                <th class="links" ng-repeat="item in head" ng-click="links(propertiesHead[$index])" >
+                    {{item}}
+                    <i ng-show="orderBy.predicate==propertiesHead[$index]" ng-class="{'up':orderBy.reverse,'down':!orderBy.reverse}"></i>
+                </th>
+            </tr>
+            <tr ng-if="data.length > 0" dir-paginate="col in data | orderBy : orderBy.predicate : orderBy.reverse | filter : search | itemsPerPage : limit.per_page">
+                <td>
+                    <a href="#/{{uri}}/{{col.id}}">Editar</a>
+                    <a href="#/{{uri}}/delete/{{col.id}}">Eliminar</a>
+                </td>
+                <td ng-repeat="item in col">{{item}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="columns">
+        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+    </div>
+</div>
 <script src="assets/bower_components/angular/angular.min.js"></script>
 <script src="assets/bower_components/angularUtils-pagination/dirPagination.js"></script>
 <script src="assets/js/app.js"></script>
